@@ -1,6 +1,7 @@
 package com.paloma.product_manager.application;
 
 import com.paloma.product_manager.adapters.dto.ProductDTO;
+import com.paloma.product_manager.application.messaging.CreateProductProducer;
 import com.paloma.product_manager.domain.builders.ProductBuilder;
 import com.paloma.product_manager.domain.exception.ProductAlreadyExistsException;
 import com.paloma.product_manager.domain.model.ProductEntity;
@@ -29,7 +30,10 @@ class ProductServiceTest {
     @Mock
     private ProductModelUseCase useCase;
 
+    @Mock
+    private CreateProductProducer productProducer;
 
+    
     @Test
     public void shouldReturnDtoWhenEntityIdExists(){
         when(useCase.findById(any())).thenReturn(ProductBuilder.aProduct().entityNow());
